@@ -31,7 +31,7 @@ You can build and run TeleSeerr using Docker Compose for easier management of en
     Replace the placeholder values with your actual credentials and URLs. **Do not commit this file to version control if it contains sensitive information.** Add `.env` to your `.gitignore` file.
 
 2.  **Create a `docker-compose.yml` file:**
-    Create a file named `docker-compose.yml` in the project root directory with the following content (or adapt your existing one):
+    Create a file named `docker-compose.yml` in the project root directory with the following content (or adapt existing one):
     ```yaml
     # docker-compose.yml
     services:
@@ -41,9 +41,6 @@ You can build and run TeleSeerr using Docker Compose for easier management of en
         env_file:
           - .env
         restart: unless-stopped
-        # Optional: Add volumes if needed, e.g., for logs or persistent data
-        # volumes:
-        #   - ./logs:/app/logs
     ```
 
 3.  **Build and run with Docker Compose:**
@@ -72,12 +69,8 @@ To run the bot locally without Docker:
 2.  **Install dependencies:**
     This project uses `uv` for dependency management. Ensure `uv` is installed.
     ```bash
-    # Create a virtual environment (optional but recommended)
-    python -m venv .venv
-    source .venv/bin/activate # On Windows use `.venv\Scripts\activate`
-
     # Install dependencies using uv
-    # uv sync
+    uv sync
     ```
 
 3.  **Set Environment Variables:**
