@@ -1,0 +1,18 @@
+[project]
+name = "teleseerr"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "langchain[openai]>=0.3.24",
+    "langgraph>=0.3.34",
+    "openai>=1.76.0",
+    "python-telegram-bot>=22.0",
+    "requests>=2.32.3",
+]
+
+[dependency-groups]
+dev = [
+    "ipython>=9.2.0",
+]

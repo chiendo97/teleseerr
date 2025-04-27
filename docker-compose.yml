@@ -1,0 +1,27 @@
+services:
+  telegram_bot:
+    container_name: telegram_bot
+    build: .
+    # container_name: teleseerr_bot # Optional: Compose generates a unique name
+    env_file:
+      - .env # Load environment variables from .env file
+    restart: unless-stopped
+    develop:
+      watch:
+        # Sync the working directory with the /app directory in the container
+        - action: sync
+          path: .
+          target: /app
+          ignore: # Exclude files/dirs that shouldn't be synced
+            - .git/
+            - .venv/ # Exclude local venv if present
+            - __pycache__/
+            - .env # Avoid syncing secrets if they change locally during runtime
+
+        # Rebuild the image if dependencies change
+        - action: rebuild
+          path: ./uv.lock
+        - action: rebuild
+          path: ./pyproject.toml
+    labels:
+      com.centurylinklabs.watchtower.enable: false
